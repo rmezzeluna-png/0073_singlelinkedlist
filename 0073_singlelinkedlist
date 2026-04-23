@@ -27,7 +27,7 @@ public:
 
         Node *nodeBaru = new Node;
         nodeBaru->nomhs = nim;
-        
+
          if (START == NULL || nim <= START->nomhs)
         {
             if (START != NULL && nim == START->nomhs)
@@ -35,3 +35,23 @@ public:
                 cout << "\nDuplikasi nomhs tidak diijinkan\n";
                 return;
             }
+             nodeBaru->next = START;
+            START = nodeBaru;
+            return;
+        }
+
+         Node *previous = START;
+        Node *current = START;
+
+        while (current != NULL && nim > current->nomhs)
+        {
+            if (nim == current->nomhs)
+            {
+                cout << "\nDuplikasi nomhs tidak diijinkan\n";
+                return;
+            }
+
+            previous = current;
+            current = current->next;
+        }
+
